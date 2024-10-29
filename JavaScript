@@ -1,0 +1,57 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const videos = [
+        { title: 'Vidéo 1', src: 'video1.mp4', category: 'sport' },
+        { title: 'Vidéo 2', src: 'video2.mp4', category: 'musique' },
+        { title: 'Vidéo 3', src: 'video3.mp4', category: 'films' },
+        { title: 'Vidéo 4', src: 'video4.mp4', category: 'films' },
+        { title: 'Vidéo 5', src: 'video5.mp4', category: 'musique' },
+        { title: 'Vidéo 6', src: 'video6.mp4', category: 'sport' },
+    ];
+
+    const videoGrid = document.getElementById('video-grid');
+
+    function displayVideos(videoList) {
+        videoGrid.innerHTML = '';
+        videoList.forEach(video => {
+            const videoCard = document.createElement('div');
+            videoCard.className = 'video-card';
+
+            const videoElement = document.createElement('video');
+            videoElement.controls = true;
+            videoElement.src = video.src;
+
+            const videoTitle = document.createElement('div');
+            videoTitle.className = 'video-title';
+            videoTitle.textContent = video.title;
+
+            videoCard.appendChild(videoElement);
+            videoCard.appendChild(videoTitle);
+            videoGrid.appendChild(videoCard);
+        });
+    }
+
+    displayVideos(videos);
+
+    window.filterVideos = function (category) {
+        if (category === 'all') {
+            displayVideos(videos);
+        } else {
+            const filteredVideos = videos.filter(video => video.category === category);
+            displayVideos(filteredVideos);
+        }
+    };
+
+    window.search = function () {
+        const searchInput = document.getElementById('search-input').value.toLowerCase();
+        const videoCards = document.querySelectorAll('.video-card');
+
+        videoCards.forEach(card => {
+            const title = card.querySelector('.video-title').textContent.toLowerCase();
+            if (title.includes(searchInput)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    };
+});
