@@ -1,34 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breeze Streaming Platform</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Breeze Streaming Avancé</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">Breeze</div>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Rechercher...">
-            <button onclick="search()">Rechercher</button>
-        </div>
-    </header>
     <div class="container">
-        <nav class="sidebar">
+        <h1>Breeze Streaming Avancé</h1>
+        
+        <!-- Lecteur Vidéo avec WebAssembly -->
+        <div id="video-container">
+            <video id="videoPlayer" controls>
+                <source id="videoSource" src="videos/video1.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+        
+        <!-- Liste de Sélection des Vidéos -->
+        <div id="videoList">
+            <h2>Choisissez une vidéo</h2>
             <ul>
-                <li><a href="#" onclick="filterVideos('all')">Accueil</a></li>
-                <li><a href="#" onclick="filterVideos('sport')">Sport</a></li>
-                <li><a href="#" onclick="filterVideos('musique')">Musique</a></li>
-                <li><a href="#" onclick="filterVideos('films')">Films</a></li>
+                <li onclick="loadVideo('videos/video1.mp4')">Vidéo 1</li>
+                <li onclick="loadVideo('videos/video2.mp4')">Vidéo 2</li>
             </ul>
-        </nav>
-        <main class="content">
-            <section class="video-grid" id="video-grid">
-                <!-- Les vidéos seront insérées ici par JavaScript -->
-            </section>
-        </main>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="app.js"></script>
 </body>
 </html>
