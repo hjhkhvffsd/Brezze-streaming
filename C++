@@ -1,0 +1,13 @@
+// video_decoder.cpp
+#include <emscripten.h>
+#include <iostream>
+
+// Exemple simple de fonction de décodage
+extern "C" {
+    EMSCRIPTEN_KEEPALIVE
+    int decode_frame(int frame) {
+        // Traitement de chaque frame, à implémenter selon les besoins
+        std::cout << "Décodage de la frame " << frame << std::endl;
+        return frame;
+    }
+}
